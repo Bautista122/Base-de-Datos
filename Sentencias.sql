@@ -60,3 +60,33 @@ INNER JOIN  rental f
 ON e.last_update = f.return_date
 /////////////////////////////////
 
+SELECT a.title, max(rental_duration), min(rental_duration) 
+FROM film a 
+//////////////////////////////////
+
+le di a iniciar y me borro todo al querer traerme todas las tablas
+//////////////////////////////////
+
+SELECT count(*), rating from film
+GROUP BY rating
+//////////////////////////////////
+
+SELECT count(*), c.name 
+FROM film a  
+INNER JOIN film_category b
+ON a.film_id = b.film_id
+INNER JOIN category c
+ON b.category_id = c.category_id
+GROUP BY name
+//////////////////////////////////
+
+SELECT count(*) AS cant_Actores, c.first_name
+FROM film a  
+INNER JOIN film_actor b
+ON a.film_id = b.film_id
+INNER JOIN actor c
+ON b.actor_id = c.actor_id
+GROUP BY c.actor_id
+ORDER BY cant_Actores DESC limit 10
+//////////////////////////////////
+
