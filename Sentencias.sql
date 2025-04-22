@@ -90,3 +90,37 @@ GROUP BY c.actor_id
 ORDER BY cant_Actores DESC limit 10
 //////////////////////////////////
 
+SELECT count(film_id), d.address, e.city, f.country   
+FROM inventory b  
+INNER JOIN  store c
+ON b.store_id = c.store_id
+INNER JOIN  address d
+ON c.address_id = d.address_id
+INNER JOIN  city e
+ON d.city_id = e.city_id
+INNER JOIN  country f
+ON e.country_id = f.country_id
+GROUP BY address
+///////////////////////////////////
+
+SELECT count(film_id), d.address, e.city, f.country   
+FROM inventory b  
+INNER JOIN  store c
+ON b.store_id = c.store_id
+INNER JOIN  address d
+ON c.address_id = d.address_id
+INNER JOIN  city e
+ON d.city_id = e.city_id
+INNER JOIN  country f
+ON e.country_id = f.country_id
+GROUP BY address
+////////////////////////////////////
+
+SELECT count(film_id), b.category, AVG(rental_duration*rental_rate)  
+FROM film a   
+INNER JOIN  film_category b
+ON a.category_id = b.category_id
+INNER JOIN inventory c
+ON a.inventory_id = c.inventory_id
+INNER JOIN rental d
+ON c.inventory_id = d.inventory_id
